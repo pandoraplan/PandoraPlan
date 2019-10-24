@@ -1,0 +1,160 @@
+@font-face {
+    font-family: 'HelveticaNeueCE35Thin';
+    src: url('/statics/font/HelveticaNeueCE35Thin.ttf');
+}
+
+@font-face {
+    font-family: 'HelveticaCERegular';
+    src: url('/statics/font/HelveticaCERegular.ttf');
+}
+
+@font-face {
+    font-family: 'MEDIUM';
+    src: url('/statics/font/AKZIDENZGROTESK-MEDIUM.OTF');
+}
+
+@font-face {
+    font-family: 'LIGHT';
+    src: url('/statics/AKZIDENZGROTESK-LIGHT.OTF');
+}
+
+header {
+    margin: 0;
+    background-color: #000000;
+    padding: 20px 50px;
+}
+
+header ul {
+    /* width: 1200px; */
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header .layui-select-title input {
+    height: 28px;
+    font-size: 14px;
+}
+
+header ul li:nth-child(2) {
+    flex-grow: 1;
+    max-width: 1200px;
+    text-align: center;
+    display: flex;
+    justify-content: space-around;
+    padding: 0 50px;
+    box-sizing: border-box;
+}
+
+header ul li:nth-child(2) a {
+    font-family: 'HelveticaCERegular';
+}
+
+header ul li:last-child {
+    margin-right: 10px;
+}
+
+header ul .layui-form {
+    font-family: 'HelveticaNeueCE35Thin';
+}
+
+header ul li a {
+    color: rgb(80, 198, 226);
+    font-size: 16px;
+    margin: 0 20px;
+    /* font-weight: bold; */
+}
+
+header ul li select {
+    outline: none;
+    border: 1px solid #b1b1b1;
+    padding: 5px 7px;
+}
+
+footer {
+    background-color: #000000;
+    padding: 90px 0;
+    text-align: center;
+}
+
+footer ul {
+    width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+footer ul dt {
+    font-size: 30px;
+    color: #fff;
+    font-family: 'MEDIUM';
+    position: relative;
+    padding-bottom: 30px;
+    margin-bottom: 50px;
+    text-align: left;
+}
+
+footer ul dt i {
+    display: inline-block;
+    position: absolute;
+    width: 30px;
+    height: 8px;
+    background-color: #a8162d;
+    left: 0;
+    bottom: 0;
+}
+
+footer ul li {
+    max-width: 330px;
+    color: #fff;
+}
+
+footer ul li dd {
+    font-size: 16px;
+    line-height: 30px;
+    text-align: left;
+    font-family: 'LIGHT';
+}
+
+.layui-form-select dl dd.layui-this {
+    background-color: #36023e;
+}
+
+header .language {
+    position: relative
+}
+
+header .language>i {
+    display: inline-block;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    margin-top: -6px;
+    background-color: #36023e;
+    z-index: 1;
+}
+
+footer .Contact_us {
+    width: 220px;
+    text-align: left;
+}
+
+footer .Contact_us img {
+    width: 60px;
+    margin-right: 10px;
+    margin-bottom: 20px;
+}
+
+footer>img {
+    width: 60px;
+    margin-top: 30px;
+}
+
+footer .backTop:hover {
+    cursor: pointer;
+}

@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>贝尔链BaerChain-全球首款以技术驱动的区块链游戏产业生态平台</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="keywords" content="贝尔链,区块链游戏,游戏公链,baerchain">
+    <meta name="description" content="贝尔链（Baer Chain）是全球首款以技术驱动的区块链游戏产业生态平台,旨在构建一个区块链共享平台来解决全球游戏生态信息中心化的孤岛问题，把所有人的行为、信用转变为数字化资产，从而产生商业价值">
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1, minimum-scale=1">
+
+    <link rel="shortcut icon" href="../../statics/images/logo.png">
+    <!-- Using only with Flat-UI (free)-->
+    <link rel="stylesheet" href="../../statics/index/developer/common-files/css/icon-font.css">
+    <!-- end -->
+    <link rel="stylesheet" href="../../statics/index/developer/samples/sample-02/css/style.css">
+    <link rel="stylesheet" href="../../statics/index/developer/samples/sample-05/css/style.css">
+    <link rel="stylesheet" href="../../statics/style/hk.css" type="text/css">
+    <link rel="stylesheet" href="../../statics/style/style.css">
+    <link rel="stylesheet" href="../../statics/css/reset.css">
+    <link rel="stylesheet" href="../../statics/css/swiper.min.css">
+    <link rel="stylesheet" href="../../statics/css/index_wap.css">
+    <script src="../../statics/js/auto-size.js"></script>
+    <script src="../../statics/js/jquery-1.8.3.min.js"></script>
+    <script src="../../statics/js/swiper.min.js"></script>
+    <!-- ico图标 -->
+    <link rel="stylesheet" href="../../statics/css/lin-css/iconfont.css">
+    <!-- layui -->
+    <link rel="stylesheet" href="../../statics/layui/css/layui.css">
+    <script src="../../statics/layui/js/layui.js"></script>
+    <script type="text/javascript">
+        document.documentElement.style.fontSize = document.documentElement.clientWidth / 750 * 100 + 'px';
+    </script>
+</head>
+
+<body>
+    <style type="text/css">
+        body {
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        }
+        
+        a,
+        div,
+        img {
+            outline: none;
+            -moz-outline-style: none;
+        }
+        
+        #banner_cover {
+            width: 100%;
+            height: 100%;
+            z-index: 101;
+            position: fixed;
+            background: #000;
+            opacity: 0.3;
+            display: none;
+        }
+        
+        #play_img {
+            width: 1rem;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-left: -.5rem;
+            margin-top: -.5rem;
+            z-index: 102;
+            /*display: none;*/
+        }
+        
+        #close {
+            position: fixed;
+            top: 34px;
+            right: 4%;
+            font-size: 34px;
+            z-index: 10000;
+            padding: 20px;
+            cursor: pointer;
+            display: none;
+            width: 24px;
+            height: 24px;
+            background-image: url("../../statics/images/close_play.png");
+            background-repeat: no-repeat;
+        }
+        
+        video {
+            position: fixed;
+            top: 30%;
+            z-index: 9999;
+            display: none;
+        }
+        
+        .nav a {
+            font-size: 0.35rem;
+            padding: 0.1rem .3rem .3rem 0;
+        }
+        
+        .nav {
+            justify-content: flex-start;
+        }
+        
+        .exit {
+            width: 0.7rem !important;
+            height: 0.7rem;
+            /*background-color: red;*/
+            position: absolute;
+            top: 1.02rem;
+            left: 6.36rem;
+            background-image: url("../../statics/images/mobile_exit.png");
+            background-size: 100% 100%;
+            /*background-repeat:no-repeat;*/
+        }
+        
+        .nav p:nth-child(2) {
+            margin-top: 1.02rem;
+        }
+        
+        .nav>* {
+            padding-left: .5rem;
+        }
+        
+        .nav>*:not(:last-child) a,
+        .nav>*:first-child {
+            border: none;
+        }
+    </style>
+
+    <script type="text/javascript">
+        $('#banner_cover').click(function() {
+            $('#bg_cover').hide(200);
+            $('#play_img').show(200);
+            $('#banner_cover').hide();
+            $('video').hide(200);
+            $('#close').hide(200);
+            // $('vide').pause();
+            document.getElementById("video1").pause();
+        });
+        $('#close').click(function() {
+            $('#bg_cover').hide(200);
+            $('#play_img').show(200);
+            $('#banner_cover').hide();
+            $('video').hide(200);
+            $('#close').hide(200);
+            // $('vide').pause();
+            document.getElementById("video1").pause();
+            if (play_status == 1) {
+                document.getElementById("bg_m").play();
+            }
+
+            // play_status = 1;
+        });
+        $('#play_img').click(function() {
+            $('#play_img').hide(200);
+            $('#close').show(200);
+            $('#banner_cover').show();
+            $('#bg_cover').show(200);
+            $('video').show(200);
+            // $('vide').play();
+            document.getElementById("video1").play();
+            document.getElementById("bg_m").pause();
+            // play_status = 2;
+        });
+    </script>
+
+    <header>
+        <div class="isHead">
+            <a href="">
+                <img class="go-home" src="../../statics/images/mobile_logo.png" alt="logo">
+            </a>
+            <div class="navIcon">
+                <img src="../../statics/images/mobile_mov.png" alt="">
+            </div>
+            <!-- <div class="mobil_lg">
+                <select name="" id="">
+                    <option value="zh">中文</option>
+                    <option value="en">English</option>
+
+                    <option value="ko">한국어</option>
+                </select>
+                <img src="/statics/images/newPage/32.png" alt="">
+            </div> -->
+            <!-- <script type="text/javascript">
+      $('#language_select option').click(function(){
+        var language = $(this).val();
+        if (language == 'en') {
+          location.href='/wap/site/seten';
+        }
+        else if (language == 'zh') {
+            location.href='/wap/site/setzh';
+        }
+        else if (language == 'ko') {
+            location.href='/wap/site/setko';
+        }
+      })
+    </script> -->
+        </div>
+
+        <!--  隐藏div菜单  -->
+        <div class="nav" style="display: none">
+            <div class="exit">
+                <!-- <img src="/statics/images/mobile_exit.png" alt="退出"> -->
+            </div>
+            <p><a href="../index.html">首页</a></p>
+            <p><a href="technology.html">贝尔链生态</a></p>
+            <!-- <p><a href="/wap/site/chain">贝尔链公链</a></p> -->
+            <p>
+                <a data-l='en_us' href="/statics/BaerChainWhitePaperv1_2_zh.pdf">白皮书 </a>
+            </p>
+
+            <p><a href="news.html">快讯</a></p>
+
+            <!-- <p><a href="/wap/site/active">活动/社群</a></p> -->
+            <p><a href="wallet.html" class="this_page">通证</a></p>
+        </div>
+    </header>
+
+    <!--蒙版-->
+    <!-- <div class="mask"></div> -->
+    <div class="container" id="page-top">
+        <script src="../../statics/js/lottie.min.js"></script>
+        <!-- css -->
+        <style>
+            /* 翻页 */
+            
+            .layui-laypage a,
+            .layui-laypage span {
+                border: none;
+                padding: 0 0.2rem;
+            }
+            
+            .pages_box {
+                display: flex;
+                justify-content: center;
+                margin-bottom: 0.5rem;
+            }
+        </style>
+        <!-- News 部分 -->
+        <div class="News">
+            <div class="g-Team2-top" id="bodymovin">
+                <img src="../../statics/images/newPage/11.png" alt="">
+                <h1>NEWS</h1>
+                <div></div>
+            </div>
+            <div class="News_list">
+                <div class="News_list_div">
+
+                    <img src="../../statics/images/newPage/default_article.jpg" alt="">
+                    <p>据消息，欧洲著名手游团队MadCat近日宣布加入Baer Chain生态，并已开始相关专项游戏的开发。据MadCat官方发言人声称，未来一年内，该游戏团队将在Baer Chain上发布不少于五款游戏。MadCat团队专注于手机ACT独立游戏的开发，以专业的动捕与流畅的打击感著称。同时，该负责人评论到，Baer Chain在主网上线之后将整个游戏生态全面开放，更多的中小型开发商将会因此获取超过百万高质用户，得到在传统渠道无法获取的发展机会。Baer Chain是基于区块链技术构架建立的分布式游戏生态平台，致力于打造全球区块链游戏第一公链。今年8月15日Baer
+                        Chain主网上线后，其官方宣布将自身超过百万用户的游戏生态全面开放，并将引入超过500款第三方游戏。
+                    </p>
+                    <!-- <img src="/statics/images/newPage/14.png" alt=""> -->
+                </div>
+            </div>
+            <div class="News_list">
+                <div class="News_list_div">
+
+                    <img src="../../statics/images/newPage/default_article.jpg" alt="">
+                    <p>Baer Chain主网正式上线后，全球生态加速扩张，为了让所有生态参与者共享发展红利，今后所有Baer Chain通证管理系统注册用户，均将根据账户BRC持币数量不定期获得Baer Chain生态优质合作伙伴空投福利。
+                    </p>
+                    <!-- <img src="/statics/images/newPage/14.png" alt=""> -->
+                </div>
+            </div>
+            <div class="News_list">
+                <div class="News_list_div">
+
+                    <img src="../../statics/images/newPage/default_article.jpg" alt="">
+                    <p>据官方消息，2019年9月1日，Baer Chain主网成功切换。“切网”意味着Baer Chain将会以可见的速度与以太坊生态脱离关系，接下来的各项进展，都可以通过Baer Chain专属区块浏览器“baerscan.io”所公开，供实时查看与追踪。
+                    </p>
+                    <!-- <img src="/statics/images/newPage/14.png" alt=""> -->
+                </div>
+            </div>
+            <div class="News_list">
+                <div class="News_list_div">
+
+                    <img src="../../statics/images/newPage/default_article.jpg" alt="">
+                    <p>Baer Chain已于新加坡时间8月14日14:00，于ETH区块高度8347000正式开始BRC主网映射。</p>
+                    <!-- <img src="/statics/images/newPage/14.png" alt=""> -->
+                </div>
+            </div>
+
+
+            <!-- 翻页 -->
+            <div class="pages_box" style="margin-top: 30px">
+                <div id="pages"></div>
+                <div>
+                </div>
+
+                <script>
+                    // 顶部动画
+                    // var animData = {
+                    //     wrapper: document.getElementById('bodymovin'),
+                    //     animType: 'svg',
+                    //     loop: true,
+                    //     prerender: true,
+                    //     autoplay: true,
+                    //     path: '/statics/jason/data.json'
+                    // };
+                    // var anim = bodymovin.loadAnimation(animData);
+                    /*锚点动效*/
+                    // $('a[href*=#],area[href*=#]').click(function () {
+                    //     if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname ==
+                    //         this.hostname) {
+                    //         var $target = $(this.hash);
+                    //         $target = $target.length && $target || $('[name=' + this.hash.slice(1) + ']');
+                    //         if ($target.length) {
+                    //             var targetOffset = $target.offset().top;
+                    //             $('html,body').animate({
+                    //                     scrollTop: targetOffset
+                    //                 },
+                    //                 1000);
+                    //             return false;
+                    //         }
+                    //     }
+                    // });
+
+                    // 翻页
+                    // layui.use(['laypage', 'layer'], function(){
+                    //     var laypage = layui.laypage,layer = layui.layer;
+                    //     //执行一个laypage实例
+                    //     laypage({
+                    //         cont: 'pages'
+                    //         ,pages: 15            ,first: 1
+                    //         ,last: 15            ,curr:1 // 当前页
+                    //         ,prev: '<em><</em>'
+                    //         ,next: '<em>></em>',
+                    //         jump: function(obj, first){
+                    //             //得到了当前页，用于向服务端请求对应数据
+                    //             var curr = obj.curr;
+                    //             console.log(curr);
+                    //             if (curr != 1) {
+                    //                 location.href='/wap/site/news?page='+curr   
+                    //             }
+                    //         }
+                    //     });
+                    // });
+                </script>
+            </div>
+
+            <!-- 页尾部分 -->
+            <footer>
+                <div class="footer_div">
+                    <div>联系我们</div>
+                    <div></div>
+                    <div class="footer_icoDiv">
+                        <a href=""><img src="../../statics/images/newPage/pc_03.png" alt=""></a>
+                        <a href=""><img src="../../statics/images/newPage/pc_05.png" alt=""></a>
+                        <a href=""><img src="../../statics/images/newPage/pc_07.png" alt=""></a>
+                        <a href=""><img src="../../statics/images/newPage/pc_12.png" alt=""></a>
+                        <!-- <a href=""><img src="/statics/images/newPage/pc_13.png" alt=""></a> -->
+                    </div>
+                </div>
+                <div class="footer_div">
+                    <div>Baer Chain</div>
+                    <div></div>
+                    <div class="footer_icoDiv">
+                        <p>贝尔链(Baer Chain)是基于区块链技术构架打造，采用分布式智能合约的游戏生态平台。它以去中心化的结构，直接将整个游戏生态链上的组成分子有机地链接起来，实现个体价值的直接对接、无损流通和安全存储。
+                        </p>
+                    </div>
+                </div>
+                <div class="footer_div">
+                    <div>资源</div>
+                    <div></div>
+                    <div class="footer_icoDiv">
+
+                        <p><a style='color: #fff' href="../../statics/BaerChainWhitePaperv1_2_en.pdf">Baer Chain White
+                                Paper V1.2 </a></p>
+                    </div>
+                </div>
+                <img class="mobile_foot_ico_fh" src="../../statics/images/newPage/mobile_foot_ico_fh.png" alt="">
+            </footer>
+            <!-- 
+<audio id="bg_m" src="/statics/bg2.mp3" autoplay="auto" loop="loop">
+
+</audio> -->
+            <!--<img src="/statics/images/bg_m_play.png" id="music_btn">-->
+            <style type="text/css">
+                #music_btn {
+                    position: fixed;
+                    bottom: 60px;
+                    right: 40px;
+                    width: 36px;
+                    height: 36px;
+                    /*border: 1px solid #ccc;*/
+                    z-index: 99;
+                }
+            </style>
+            <script type="text/javascript">
+                var play_status = 1;
+                $('#music_btn').click(function() {
+                    if (play_status == 1) {
+                        play_status = 2;
+                        //
+                        document.getElementById("bg_m").pause();
+                        $('#music_btn').attr('src', '../../statics/images/bg_m_stop.png');
+                    } else {
+
+                        play_status = 1;
+                        //
+                        document.getElementById("bg_m").play();
+                        $('#music_btn').attr('src', '../../statics/images/bg_m_play.png');
+                    }
+                })
+
+                //  exit 退出
+                $('.exit').click(function() {
+                    $('.nav').css('display', 'none');
+                })
+            </script>
+            <style type="text/css">
+                .index_content7 h6 {
+                    color: #3c507c;
+                    font-weight: bold;
+                    font-size: 12px;
+                    margin-top: 3px;
+                    text-align: center;
+                }
+                
+                .index_content7 p {
+                    font-size: 10px;
+                    margin: 20px 0;
+                    text-align: center;
+                }
+                
+                .footer_icoDiv>a {
+                    margin-right: .23rem;
+                }
+            </style>
+
+            <div style="display: none">
+                <script src="https://s22.cnzz.com/z_stat.php?id=1273653612&web_id=1273653612" language="JavaScript"></script>
+            </div>
+
+            <script src="../../statics/js/main.js"></script>
+
+            <script>
+                //返回顶部
+                $(".mobile_foot_ico_fh").click(function() {
+                    $('html , body').animate({
+                        scrollTop: 0
+                    }, 'slow');
+                })
+
+                //判断语言跳转页面
+                // $(function(){
+                //     // console.log($('.mobil_lg select').val());
+                //     $('.mobil_lg select').change(function () {
+                //         if($('.mobil_lg select').val() == "en"){
+                //             window.location.href = "/wap/site/seten";
+                //             $('.mobil_lg select').val('English');
+                //         }
+                //         else if($('.mobil_lg select').val() == "zh"){
+                //             window.location.href = "/wap/site/setzh";
+                //             $('.mobil_lg select').val('中文');
+                //         }
+                //         else{
+                //             window.location.href = "/wap/site/setko";
+                //             $('.mobil_lg select').val('한국어');
+                //         }
+                //     })
+                // })
+            </script>
+
+</body>
+
+</html>

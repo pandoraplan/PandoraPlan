@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>PandoraPlan</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="keywords" content="PandoraPlan">
+    <meta name="description" content="PandoraPlan">
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1, minimum-scale=1">
+
+    <link rel="shortcut icon" href="/statics/images/logo.png">
+    <!-- Using only with Flat-UI (free)-->
+    <link rel="stylesheet" href="../statics/index/developer/common-files/css/icon-font.css">
+    <!-- end -->
+    <link rel="stylesheet" href="../statics/index/developer/samples/sample-02/css/style.css">
+    <link rel="stylesheet" href="../statics/index/developer/samples/sample-05/css/style.css">
+    <link rel="stylesheet" href="../statics/style/hk.css" type="text/css">
+    <link rel="stylesheet" href="../statics/style/style.css">
+    <link rel="stylesheet" href="../statics/css/reset.css">
+    <link rel="stylesheet" href="../statics/css/swiper.min.css">
+    <link rel="stylesheet" href="../statics/css/index_wap.css">
+    <script src="../statics/js/auto-size.js"></script>
+    <script type="text/javascript" src="../statics/js/three.min.js"></script>
+    <script type="text/javascript" src="../statics/js/dat.gui.min.js"></script>
+    <script type="text/javascript" src="../statics/js/Stats.min.js"></script>
+    <script src="../statics/js/jquery-1.8.3.min.js"></script>
+    <script src="../statics/js/swiper.min.js"></script>
+    <script src="../statics/js/index.js"></script>
+    <!-- ico图标 -->
+    <link rel="stylesheet" href="../statics/css/lin-css/iconfont.css">
+    <!-- layui -->
+    <link rel="stylesheet" href="../statics/layui/css/layui.css">
+    <script src="../statics/layui/js/layui.js"></script>
+    <script type="text/javascript">
+        document.documentElement.style.fontSize = document.documentElement.clientWidth / 750 * 100 + 'px';
+    </script>
+</head>
+
+<body>
+    <style type="text/css">
+        body {
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        }
+        
+        a,
+        div,
+        img {
+            outline: none;
+            -moz-outline-style: none;
+        }
+        
+        #banner_cover {
+            width: 100%;
+            height: 100%;
+            z-index: 101;
+            position: fixed;
+            background: #000;
+            opacity: 0.3;
+            display: none;
+        }
+        
+        #play_img {
+            width: 1rem;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-left: -.5rem;
+            margin-top: -.5rem;
+            z-index: 102;
+            /*display: none;*/
+        }
+        
+        #close {
+            position: fixed;
+            top: 34px;
+            right: 4%;
+            font-size: 34px;
+            z-index: 10000;
+            padding: 20px;
+            cursor: pointer;
+            display: none;
+            width: 24px;
+            height: 24px;
+            background-image: url('../statics/images/close_play.png');
+            background-repeat: no-repeat;
+        }
+        
+        video {
+            position: fixed;
+            top: 30%;
+            z-index: 9999;
+            display: none;
+        }
+        
+        .nav a {
+            font-size: 0.35rem;
+            padding: 0.1rem .3rem .3rem 0;
+        }
+        
+        .nav {
+            justify-content: flex-start;
+        }
+        
+        .exit {
+            width: 0.7rem !important;
+            height: 0.7rem;
+            /*background-color: red;*/
+            position: absolute;
+            top: 1.02rem;
+            left: 6.36rem;
+            background-image: url("../statics/images/mobile_exit.png");
+            background-size: 100% 100%;
+            /*background-repeat:no-repeat;*/
+        }
+        
+        .nav p:nth-child(2) {
+            margin-top: 1.02rem;
+        }
+        
+        .nav>* {
+            padding-left: .5rem;
+        }
+        
+        .nav>*:not(:last-child) a,
+        .nav>*:first-child {
+            border: none;
+        }
+        
+        .mobil_center_4 {
+            margin-top: 1rem;
+            position: relative;
+        }
+    </style>
+
+    <script type="text/javascript">
+        $('#banner_cover').click(function() {
+            $('#bg_cover').hide(200);
+            $('#play_img').show(200);
+            $('#banner_cover').hide();
+            $('video').hide(200);
+            $('#close').hide(200);
+            // $('vide').pause();
+            document.getElementById("video1").pause();
+        });
+        $('#close').click(function() {
+            $('#bg_cover').hide(200);
+            $('#play_img').show(200);
+            $('#banner_cover').hide();
+            $('video').hide(200);
+            $('#close').hide(200);
+            // $('vide').pause();
+            document.getElementById("video1").pause();
+            if (play_status == 1) {
+                document.getElementById("bg_m").play();
+            }
+
+            // play_status = 1;
+        });
+        $('#play_img').click(function() {
+            $('#play_img').hide(200);
+            $('#close').show(200);
+            $('#banner_cover').show();
+            $('#bg_cover').show(200);
+            $('video').show(200);
+            // $('vide').play();
+            document.getElementById("video1").play();
+            document.getElementById("bg_m").pause();
+            // play_status = 2;
+        });
+    </script>
+
+    <header>
+        <div class="isHead">
+            <a href="">
+                <img class="go-home" src="../statics/images/mobile_logo.png" alt="logo">
+            </a>
+            <div class="navIcon">
+                <img src="../statics/images/mobile_mov.png" alt="">
+            </div>
+            <!-- <div class="mobil_lg">
+                <select name="" id="">
+                    <option value="zh">中文</option>
+                    <option value="en">English</option>
+
+                    <option value="ko">한국어</option>
+                </select>
+                <img src="../statics/images/newPage/32.png" alt="">
+            </div> -->
+            <!-- <script type="text/javascript">
+      $('#language_select option').click(function(){
+        var language = $(this).val();
+        if (language == 'en') {
+          location.href='/wap/site/seten';
+        }
+        else if (language == 'zh') {
+            location.href='/wap/site/setzh';
+        }
+        else if (language == 'ko') {
+            location.href='/wap/site/setko';
+        }
+      })
+    </script> -->
+        </div>
+
+        <!--  隐藏div菜单  -->
+        <div class="nav" style="display: none">
+            <div class="exit">
+                <img src="../statics/images/mobile_exit.png" alt="退出">
+            </div>
+            <p><a href="#mobil_center_2">關於</a></p>
+            <p>
+                <!-- <a href="./site/technology.html">技術</a> -->
+                <a href="#mobil_center_3">規劃</a>
+            </p>
+            <p>
+                <a href="#mobil_center_4">佈局</a>
+            </p>
+            <p>
+                <a href="../statics/Pandora Plan.pdf">白皮書</a>
+            </p>
+
+        </div>
+    </header>
+
+    <!--蒙版-->
+    <!-- <div class="mask"></div> -->
+    <div class="container" id="page-top">
+        <!-- <script src="../statics/js/lottie.min.js"></script> -->
+        <div class="center">
+            <!-- top img部分 -->
+            <div class="mobil_center_1" id="WebGL-output">
+                <div>
+                    <h1 style="font-family:'MEDIUM'; ">PandoraPlan</h1>
+                </div>
+            </div>
+            <!-- <div class="mobil_center_1" id="bodymovin">
+                <div>
+                    <h1 style="font-family:'MEDIUM'; ">PandoraPlan</h1>
+                    <p style="font-family:'fontHelveticaNeueCE35Roman'">THE PIONEER OF GLOBAL GAME PUBLIC CHAIN</p>
+                </div>
+            </div> -->
+            <!-- 第一个div -->
+            <div class="mobil_center_2" id="mobil_center_2">
+                <div>
+                    <img src="../statics/images/newPage/1.png" alt="">
+                    <div>
+                        <span>關於</span>
+                        <span>|</span>
+                        <span>01</span>
+                    </div>
+                </div>
+                <div class="mobil_center_2_text">
+                    <h1>Pandora Plan目標</h1>
+                    <p>Pandora Plan建立共享社區是希望通過社區力量對傳統遊戲進行區塊鏈改造，打造基於區塊鏈、人工智能的遊戲流量入口，服務於項目方、社群和遊戲以及用戶全產業鏈。</p>
+                </div>
+            </div>
+            <!-- 第二个div -->
+            <div class="mobil_center_3" id="mobil_center_3">
+                <div>
+                    <i>規劃</i>
+                    <span>|</span>
+                    <span>02</span>
+                </div>
+                <!-- 圆球内容 -->
+                <div class="ball_text_div">
+                    <!-- <img class="ball_text_div_img1" src="../statics/images/bg.png" alt=""> -->
+                    <!--  圆球文字轮播 -->
+                    <div class="swiper-container my-ball-div" id="swiper1">
+                        <div class="parallax-bg my-ball-div-bg" data-swiper-parallax="-23%"></div>
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide" style="display: flex; flex-direction: column;">
+                                <div class="title my-ball-title" data-swiper-parallax="-300" style="font-family: 'MEDIUM';">宙斯的禮物</div>
+                                <div class="text" data-swiper-parallax="-100">
+                                    <p class="my-ball-text" style="font-family:  'LIGHT'" ;>在創世階段唯一
+                                    </p>
+                                    <p class="my-ball-text" style="font-family:  'LIGHT'" ;>一個獲取PDP的入口。
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="swiper-slide" style="display: flex; flex-direction: column;">
+                                <div class="title my-ball-title" data-swiper-parallax="-300" data-swiper-parallax-opacity="0">先知先覺</div>
+                                <!--            <div class="subtitle" data-swiper-parallax="-200">Subtitle</div>-->
+                                <div class="text" data-swiper-parallax="-100">
+                                    <p class="my-ball-text">最早領悟Pandora Plan的人類，
+                                    </p>
+                                    <p class="my-ball-text">也就是製造財富的智者。
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="swiper-slide" style="display: flex; flex-direction: column;">
+                                <div class="title my-ball-title" data-swiper-parallax="-300">火種計劃</div>
+                                <!--            <div class="subtitle" data-swiper-parallax="-200">Subtitle</div>-->
+                                <div class="text" data-swiper-parallax="-100">
+                                    <p class="my-ball-text">星星之火引來源源不斷、 </p>
+                                    <p class="my-ball-text">無限循環的生命閉環。 </p>
+                                </div>
+                            </div>
+                            <div class="swiper-slide" style="display: flex; flex-direction: column;">
+                                <div class="title my-ball-title" data-swiper-parallax="-300">潘多拉魔盒</div>
+                                <!--            <div class="subtitle" data-swiper-parallax="-200">Subtitle</div>-->
+                                <div class="text" data-swiper-parallax="-100">
+                                    <p class="my-ball-text">只有擁有上帝鑰匙的人才能 </p>
+                                    <p class="my-ball-text">打開通往財富自由的魔盒。 </p>
+                                </div>
+                            </div>
+                            <div class="swiper-slide" style="display: flex; flex-direction: column;">
+                                <div class="title my-ball-title" data-swiper-parallax="-300">輪迴合約</div>
+                                <!--            <div class="subtitle" data-swiper-parallax="-200">Subtitle</div>-->
+                                <div class="text" data-swiper-parallax="-100">
+                                    <p class="my-ball-text">一場只有PDP </p>
+                                    <p class="my-ball-text">才能參與的ETH爭奪賽。 </p>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Add Navigation -->
+                    </div>
+                    <!-- <div class="swiper-button-prev prev1 swiper-button-white myButtonleft my-button-left"></div> -->
+                    <!-- <div class="swiper-button-next next1 swiper-button-white myButtonright my-button-right"></div> -->
+                </div>
+                <div class="ball_buttom_img">
+                    <img src="../statics/images/newPage/6.png" alt="">
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+            <div class="mobil_center_3" style="height: 5.4rem;" id="mobil_center_4">
+                <div>
+                    <i>佈局</i>
+                    <span>|</span>
+                    <span>03</span>
+                </div>
+
+                <div class="slideshow">
+                    <div></div>
+
+                    <!-- 方框轮播图 -->
+                    <div class="swiper-container" id="swiper2">
+                        <div class="swiper-wrapper">
+
+                            <div class="swiper-slide">
+                                <a href=''><img class="my-box-viewpage-img" src="../images/01_wap.png" alt=""></a>
+                            </div>
+
+                            <div class="swiper-slide">
+                                <a href=''><img class="my-box-viewpage-img" src="../images/02_wap.png" alt=""></a>
+                            </div>
+
+                            <div class="swiper-slide">
+                                <a href=''><img class="my-box-viewpage-img" src="../images/03_wap.png" alt=""></a>
+                            </div>
+
+                            <div class="swiper-slide">
+                                <a href=''><img class="my-box-viewpage-img" src="../images/04_wap.png" alt=""></a>
+                            </div>
+
+                            <!--        <div class="swiper-slide">-->
+                            <!--          <img class="my-box-viewpage-img" src="/statics/images/newPage/23.png" alt="">-->
+                            <!--        </div>-->
+                            <!--        <div class="swiper-slide">-->
+                            <!--            <a href='/wap/site/wallet'>-->
+                            <!--            <img class="my-box-viewpage-img" src="/statics/images/newPage/24.png" alt="">-->
+                            <!--          </a>-->
+                            <!--        </div>-->
+                        </div>
+                        <!-- Add Pagination -->
+                        <div class="swiper-pagination swp2"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- 地图插图 -->
+            <img class="red_map" src="../statics/images/newPage/newbg.jpg" alt="">
+
+
+            <!--          <div class="swiper-slide">-->
+            <!--            <a href="" style="width: 100%;height: 100%;display: inline-block;position: absolute;"></a>-->
+            <!--            <img src="/statics/images/1_07.jpg" alt="">-->
+            <!--            <h1>James Leo</h1>-->
+            <!--            <p>Distributed ledger engineer</p>-->
+            <!--          </div>-->
+            <!--          <div class="swiper-slide">-->
+            <!--            <a href="" style="width: 100%;height: 100%;display: inline-block;position: absolute;"></a>-->
+            <!--            <img src="/statics/images/1_08.jpg" alt="">-->
+            <!--            <h1>Ziv</h1>-->
+            <!--            <p>Full stack developer</p>-->
+            <!--          </div>-->
+            <!--          <div class="swiper-slide">-->
+            <!--            <a href="" style="width: 100%;height: 100%;display: inline-block;position: absolute;"></a>-->
+            <!--            <img src="/statics/images/1_11.jpg" alt="">-->
+            <!--            <h1>Jackey</h1>-->
+            <!--            <p>Chief marketing officer</p>-->
+            <!--          </div>-->
+            <!-- </div>
+                    </div> -->
+            <!-- Add Arrows -->
+            <!-- <div class="swiper-button-next next3"></div>
+                    <div class="swiper-button-prev prev3"></div>
+                </div>
+                <img src="/statics/images/newPage/7.png" alt="">
+            </div> -->
+            <!-- 内容底部列表 -->
+            <!-- <div class="index_center_list " style='display: none;'>
+                <div class="index_center_list_title">
+                    <img src="../statics/images/newPage/14.png" alt="">
+                    <div>
+                        <h1>Singapore Baer Chain signs strategic cooperation agreement with Mars Finance</h1>
+                    </div>
+                    <div>
+                        <p>Today, Singapore Baer Chain announced the official signing of a strategic cooperation agreement with Mars Finance. </p>
+                    </div>
+                </div>
+                <div class="index_center_list_title">
+                    <img src="../statics/images/newPage/14.png" alt="">
+                    <div>
+                        <h1>Singapore Baer Chain signs strategic cooperation agreement with Mars Finance</h1>
+                    </div>
+                    <div>
+                        <p>Today, Singapore Baer Chain announced the official signing of a strategic cooperation agreement with Mars Finance. </p>
+                    </div>
+                </div>
+                <div class="index_center_list_title">
+                    <img src="../statics/images/newPage/14.png" alt="">
+                    <div>
+                        <h1>Singapore Baer Chain signs strategic cooperation agreement with Mars Finance</h1>
+                    </div>
+                    <div>
+                        <p>Today, Singapore Baer Chain announced the official signing of a strategic cooperation agreement with Mars Finance. </p>
+                    </div>
+                </div>
+                <div class="index_center_list_title">
+                    <img src="../statics/images/newPage/14.png" alt="">
+                    <div>
+                        <h1>Singapore Baer Chain signs strategic cooperation agreement with Mars Finance</h1>
+                    </div>
+                    <div>
+                        <p>Today, Singapore Baer Chain announced the official signing of a strategic cooperation agreement with Mars Finance. </p>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+
+        <!-- css 部分 -->
+        <!-- Link Swiper's CSS -->
+        <link rel="stylesheet" href="../statics/css/swiper.min.css">
+
+        <!-- Demo styles -->
+        <style>
+            html,
+            body {
+                position: relative;
+                height: 100%;
+            }
+            
+            body {
+                font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+                font-size: 14px;
+                color: #50C6E2;
+                margin: 0;
+                padding: 0;
+                background-color: #000;
+            }
+            
+            #bodymovin div h1 {
+                font-size: 1.1rem;
+                color: white;
+            }
+            
+            #bodymovin div p {
+                font-size: .17rem;
+            }
+            
+            #bodymovin {
+                background: #2e0333;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .mobil_center_1 svg {
+                height: 5.03rem !important;
+                margin-top: .94rem;
+            }
+            
+            .mobil_center_1 div {
+                position: absolute;
+                width: 100%;
+                text-align: center;
+                color: white;
+                top: 3.38rem;
+                z-index: 200;
+            }
+            
+            .mobil_center_1 div h1 {
+                font-size: 32px;
+                color: rgb( 80, 198, 226);
+            }
+            
+            .swiper-container {
+                height: 100%;
+            }
+            
+            .swiper-slide {
+                background: url("../statics/images/bg.png") no-repeat center center;
+                font-size: 18px;
+                -webkit-box-sizing: border-box;
+                box-sizing: border-box;
+                /*padding: 40px 60px;*/
+                text-align: center;
+            }
+            
+            .parallax-bg {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 130%;
+                height: 100%;
+                -webkit-background-size: cover;
+                background-size: cover;
+                background-position: center;
+            }
+            
+            .swiper-slide .title {
+                margin: 1.3rem 0 .2rem;
+            }
+            
+            .swiper-slide .subtitle {
+                font-size: 21px;
+            }
+            
+            .ball_text_div .swiper-slide div {
+                font-size: 14px;
+                /*width: 220px;*/
+                line-height: 1.3;
+                padding: 0 .5rem;
+                padding-top: 0.3rem;
+            }
+            
+            .my-ball-div {
+                width: 4.80rem;
+                height: 4.78rem;
+                border-radius: 4%;
+            }
+            
+            .my-ball-div-bg {
+                /* background-image: url("../statics/images/bg.png"); */
+                /* width: 100%; */
+            }
+            
+            .my-button-left {
+                top: 41%;
+                background-image: url("../statics/images/newPage/15.png") !important;
+                width: .65rem;
+                background-size: 100%;
+            }
+            
+            .my-button-right {
+                top: 41%;
+                background-image: url("../statics/images/newPage/16.png") !important;
+                width: .65rem;
+                background-size: 100%;
+            }
+            
+            .my-ball-title {
+                font-size: .4rem !important;
+                font-weight: bold !important;
+            }
+            
+            .my-ball-text {
+                font-size: .17rem;
+            }
+            
+            .my-box-viewpage-img {
+                min-height: 100%;
+            }
+            
+            .my-ball-img-box {
+                margin-top: -62px;
+            }
+            
+            .my-ball-img-box h1 {
+                color: #959595;
+                font-size: .19rem;
+                font-weight: bold;
+            }
+            
+            .my-ball-img-box p {
+                color: #959595;
+                font-size: .16rem;
+            }
+            
+            .my-ball-img-box .swiper-slide {
+                width: 1.41rem !important;
+            }
+            
+            .my-ball-img-box-img {
+                width: 100%;
+                border-radius: 50%;
+            }
+            /* 选中部分css */
+            
+            .my-ball-img-box .swiper-slide-active {
+                /*top: 14px;*/
+                /*background-color: #ccc;*/
+                width: 2.15rem !important;
+            }
+            /* 前一张图 */
+            
+            .my-ball-img-box .swiper-slide-prev {
+                width: 1.41rem !important;
+            }
+            /* 后一张图 */
+            
+            .my-ball-img-box .swiper-slide-next {
+                width: 1.41rem !important;
+            }
+            
+            .my-ball {
+                padding: 0 20px;
+            }
+            
+            .swiper-button-next.swiper-button-white,
+            .swiper-container-rtl .swiper-button-prev.swiper-button-white {
+                background-image: url("../statics/images/newPage/31.png")
+            }
+            
+            .swiper-button-prev.swiper-button-white,
+            .swiper-container-rtl .swiper-button-next.swiper-button-white {
+                background-image: url("../statics/images/newPage/30.png")
+            }
+            
+            .my-ball-img-box .swiper-slide-prev {
+                margin: 0px !important;
+            }
+            
+            .my-ball-img-box .swiper-slide-active {
+                margin: 0px !important;
+            }
+            
+            .my-ball-img-box .swiper-slide-next {
+                margin: 0px !important;
+            }
+            
+            .my-ball-img-box .swiper-wrapper {
+                display: flex;
+                justify-content: space-between;
+            }
+            
+            .my-ball-img-box {
+                width: 92%;
+            }
+            
+            .my-ball .swiper-button-prev {
+                top: 34.6rem;
+                width: .30rem;
+                height: .30rem;
+            }
+            
+            .my-ball .swiper-button-next {
+                top: 34.6rem;
+                width: .30rem;
+                height: .30rem;
+            }
+            /*.my-ball .swiper-slide, .swiper-slide-duplicate div {*/
+            /*width: 65%;*/
+            /*margin: 0 auto;*/
+            /*}*/
+            
+            .my-ball .swiper-slide,
+            .swiper-slide-duplicate,
+            .swiper-slide-next div {
+                width: 100%;
+                margin: 0 auto;
+            }
+            
+            .swiper-pagination-bullet-active {
+                background-color: #e7e7e7;
+                width: 0.08rem;
+                height: 0.08rem;
+            }
+            
+            .swiper-pagination-bullet {
+                background-color: #7f7f82;
+                width: 0.08rem;
+                height: 0.08rem;
+            }
+            
+            .mobil_center_1 {
+                height: 7.09rem;
+            }
+            
+            .mobil_center_1 canvas {
+                height: 350px !important;
+            }
+        </style>
+
+        <!-- js 部分 -->
+        <!-- Swiper JS -->
+        <script src="../statics/js/swiper.min.js"></script>
+        <!-- Initialize Swiper -->
+        <script>
+            //三个轮播系统
+            var swiper1 = new Swiper('#swiper1', {
+                autoplay: true,
+                speed: 600,
+                parallax: true,
+                loop: true,
+                navigation: {
+                    nextEl: '.next1',
+                    prevEl: '.prev1',
+                }
+            });
+            var swiper2 = new Swiper('#swiper2', {
+                loop: true,
+                autoplay: true,
+                pagination: {
+                    el: '.swp2',
+                },
+                navigation: {
+                    nextEl: '.next2',
+                    prevEl: '.prev2',
+                }
+            });
+            // var swiper3 = new Swiper('#swiper3', {
+            //     loop: true,
+            //     slidesPerView: 3, //显示的数量
+            //     spaceBetween: 10, //div之间的距离
+            //     slidesPerGroup: 1,
+            //     pagination: {
+            //         el: '.swp3',
+            //         clickable: true,
+            //     },
+            //     navigation: {
+            //         nextEl: '.next3',
+            //         prevEl: '.prev3',
+            //     }
+            // });
+
+            /*锚点动效*/
+            $('a[href*=#],area[href*=#]').click(function() {
+                if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname ==
+                    this.hostname) {
+                    var $target = $(this.hash);
+                    $target = $target.length && $target || $('[name=' + this.hash.slice(1) + ']');
+                    if ($target.length) {
+                        var targetOffset = $target.offset().top;
+                        $('html,body').animate({
+                                scrollTop: targetOffset
+                            },
+                            1000);
+                        return false;
+                    }
+                }
+            });
+        </script>
+    </div>
+
+    <!-- 页尾部分 -->
+    <footer>
+        <div class="footer_div">
+            <div>聯係我們</div>
+            <div></div>
+            <div class="footer_icoDiv">
+                <a href="mailto:pandoraplan1@gmail.com"><img src="../statics/images/newPage/pc_13.png" alt=""></a>
+                <a href=""><img src="../statics/images/github.png" alt=""></a>
+                <a href=""><img src="../statics/images/newPage/pc_07.png" alt=""></a>
+                <!-- <a href=""><img src="/statics/images/newPage/pc_13.png" alt=""></a> -->
+            </div>
+        </div>
+        <div class="footer_div">
+            <div>Pandora Plan目標</div>
+            <div></div>
+            <div class="footer_icoDiv">
+                <p>Pandora Plan建立共享社區是希望通過社區力量對傳統遊戲進行區塊鏈改造，打造基於區塊鏈、人工智能的遊戲流量入口，服務於項目方、社群和遊戲以及用戶全產業鏈。
+                </p>
+            </div>
+        </div>
+        <div class="footer_div">
+            <div>白皮書</div>
+            <div></div>
+            <div class="footer_icoDiv">
+
+                <p><a style='color: #fff' href="../statics/Pandora Plan.pdf">Pandora Plan
+                    </a></p>
+            </div>
+        </div>
+        <img class="mobile_foot_ico_fh" src="../statics/images/newPage/top.png" alt="">
+    </footer>
+    <!-- 
+<audio id="bg_m" src="/statics/bg2.mp3" autoplay="auto" loop="loop">
+
+</audio> -->
+    <!--<img src="/statics/images/bg_m_play.png" id="music_btn">-->
+    <style type="text/css">
+        #music_btn {
+            position: fixed;
+            bottom: 60px;
+            right: 40px;
+            width: 36px;
+            height: 36px;
+            /*border: 1px solid #ccc;*/
+            z-index: 99;
+        }
+    </style>
+    <script type="text/javascript">
+        var play_status = 1;
+        $('#music_btn').click(function() {
+            if (play_status == 1) {
+                play_status = 2;
+                //
+                document.getElementById("bg_m").pause();
+                $('#music_btn').attr('src', '../statics/images/bg_m_stop.png');
+            } else {
+
+                play_status = 1;
+                //
+                document.getElementById("bg_m").play();
+                $('#music_btn').attr('src', '../statics/images/bg_m_play.png');
+            }
+        })
+
+        //  exit 退出
+        $('.exit').click(function() {
+            $('.nav').css('display', 'none');
+        })
+    </script>
+    <style type="text/css">
+        .index_content7 h6 {
+            color: #3c507c;
+            font-weight: bold;
+            font-size: 12px;
+            margin-top: 3px;
+            text-align: center;
+        }
+        
+        .index_content7 p {
+            font-size: 10px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        .footer_icoDiv>a {
+            margin-right: .23rem;
+        }
+    </style>
+
+    <div style="display: none">
+        <script src="https://s22.cnzz.com/z_stat.php?id=1273653612&web_id=1273653612" language="JavaScript"></script>
+    </div>
+
+    <script src="../statics/js/main.js"></script>
+
+    <script>
+        //返回顶部
+        $(".mobile_foot_ico_fh").click(function() {
+            $('html , body').animate({
+                scrollTop: 0
+            }, 'slow');
+        })
+
+        //判断语言跳转页面
+        // $(function () {
+        //     // console.log($('.mobil_lg select').val());
+        //     $('.mobil_lg select').change(function () {
+        //         if ($('.mobil_lg select').val() == "en") {
+        //             window.location.href = "/wap/site/seten";
+        //             $('.mobil_lg select').val('English');
+        //         } else if ($('.mobil_lg select').val() == "zh") {
+        //             window.location.href = "/wap/site/setzh";
+        //             $('.mobil_lg select').val('中文');
+        //         } else {
+        //             window.location.href = "/wap/site/setko";
+        //             $('.mobil_lg select').val('한국어');
+        //         }
+        //     })
+        // })
+    </script>
+
+</body>
+
+</html>

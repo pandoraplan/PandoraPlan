@@ -1,0 +1,126 @@
+*{
+    box-sizing: border-box;
+}
+.h_inviteTitle{
+    margin-bottom: 18px;
+    font-size: 22px;
+}
+.h_inviteTitle2{
+    margin-bottom: 11px;
+    font-size: 16px;
+}
+.h_inviteIntroduce{
+    margin-bottom: 24px;
+    font-size: 16px;
+    color:#f76969;
+}
+.h_inviteContent{
+    width:100%;
+    background: #ffffff;
+    box-shadow: 0 0 10px rgba(0,0,0,.1);
+}
+.h_inviteBox{
+    margin-bottom: 26px;
+    background: url("/statics/images/invitebox-background.png")no-repeat center;
+    background-size: cover;
+}
+.h_inviterCode{
+    padding:42px 17px 10px 20px;
+    color: #ffffff;
+}
+.h_inviterCode_title{
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+.h_inviterCode_link{
+    margin-right: 20px;
+    font-size: 17px;
+    word-break:break-all;
+}
+.h_inviterCode_btn{
+    padding:0 35px;
+    height: 42px;
+    border:none;
+    border-radius: 5px;
+    background: #5cd7f5;
+    font-size: 20px;
+    color: #ffffff;
+}
+.h_invieNum span{
+    font-size:20px;
+}
+.h_invieNum{
+    margin-bottom: 24px;
+    padding-left:20px;
+}
+.h_invitePiece span{
+    display: inline-block;
+}
+.h_invitePiece_color{
+    margin-right: 10px;
+    width:38px;
+    height:14px;
+    border-radius: 1px;
+    background: #c23531;
+}
+.h_inviePeo{
+    font-size: 16px;
+}
+.h_invitePiece{
+    padding-left:20px;
+    margin-bottom: 16px;
+}
+.h_invitePiece_color2{
+    margin-right: 10px;
+    width:38px;
+    height:14px;
+    border-radius: 1px;
+    background: #2f4554;
+}
+.h_inviteClone{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+#piechart{
+    margin-left: 20px;
+    height:290px;
+    width:650px;
+}
+@media screen and (max-width: 700px){
+    #piechart {
+        margin-left: 20px;
+        height: 290px;
+        width: 290px;
+    }
+    .h_inviterCode_link{
+        width: 100%;
+        margin-right: 20px;
+        margin-bottom: 5px;
+        font-size: 17px;
+        word-break:break-all;
+    }
+    .h_inviteClone{
+        justify-content: space-between;
+        align-items: center;
+        display: block;
+    }
+}
+.h_candy{
+    background: url("/statics/images/candy.png") no-repeat center!important;
+}
+.flex-item{
+    display: flex;
+    align-items: center;
+}
+.img_size{
+    margin-right: 19px!important;
+}
+.h_qdimg{
+    margin-bottom: 23px;
+}
+.h_qdtxt{
+    font-size: 18px!important;
+    text-align: center;
+    color: #ffffff!important;
+}

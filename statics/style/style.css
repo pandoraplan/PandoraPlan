@@ -1,0 +1,399 @@
+@media screen  and (min-width: 1000px) {
+    .content {
+        width: 700px !important;
+    }
+
+    .coin_num {
+        min-width: 230px !important;
+    }
+
+    .my_coin_ice_frozen {
+        padding-left: 100px;
+    }
+}
+
+@media screen  and (max-width: 798px) {
+    .coin_list_detail_list .one_line, .coin_list_detail_list .tow_line p {
+        font-size: 16px !important;
+    }
+
+    .coin_pay_get_list_pager .pagination li a {
+        font-size: 16px !important;
+    }
+}
+
+p {
+    margin-bottom: 0;
+}
+
+li {
+    list-style: none;
+}
+
+.title_name {
+    color: #333333;
+    font-size: 22px;
+}
+
+.treeview-menu li {
+    height: 80px;
+    line-height: 80px;
+}
+
+.coin_tips {
+    margin-bottom: 25px;
+}
+
+.my_coin {
+    padding-top: 31px;
+    padding-left: 26px;
+    background-color: #00c0ef;
+}
+
+.my_coin_show_container {
+    margin-bottom: 32px;
+}
+
+.my_coin_img {
+    margin-right: 20px;
+}
+
+.my_coin_show_all {
+    display: inline-block;
+    line-height: 46px;
+    font-size: 36px;
+    color: #f9f9f9;
+}
+
+.my_coin_get.btn {
+    margin-left: 20px;
+    border: none;
+    background-color: #5cd7f5;
+}
+
+.my_coin_name {
+    opacity: 0.38;
+    font-size: 26px;
+    color: #f9f9f9;
+}
+
+.my_coin_ice_frozen {
+    padding-bottom: 50px;
+    font-size: 24px;
+    color: #fff;
+}
+
+.coin_num {
+    display: inline-block;
+    /*min-width: 230px;*/
+}
+
+.coin_pay_get_list .nav-tabs-custom {
+    padding-left: 28px;
+}
+
+.coin_pay_get_list ul {
+    padding-left: 0;
+}
+
+.coin_pay_get_list li {
+    border: none;
+    font-size: 18px;
+    min-width: 70px;
+    list-style: none;
+}
+
+.coin_pay_get_list a, .coin_pay_get_list .nav {
+    border: none !important;
+    color: rgba(0, 0, 0, 0.4);
+}
+
+.nav-tabs-custom > .nav-tabs > li.active {
+    border: none;
+    border-bottom: 3px solid #00c0ef;
+}
+
+.coin_list_detail_list .row {
+    margin: 0;
+}
+
+.coin_list_detail_list ul li {
+    padding-top: 26px;
+}
+
+.coin_list_detail_list li > div {
+    padding: 0;
+}
+
+.coin_list_detail_list p {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.tow_line {
+    line-height: 31px;
+}
+
+.tow_line p {
+    font-size: 24px;
+    color: #000;
+}
+
+.tow_line p.time {
+    font-size: 20px;
+    color: rgba(0, 0, 0, 0.6);
+}
+
+.one_line {
+    line-height: 62px;
+    font-size: 24px;
+    color: #000000;
+}
+
+.one_line .add {
+    color: #68d674;
+
+}
+
+.one_line .cut {
+    color: #f8a9a9;
+}
+
+.coin_title {
+    padding-left: 10px;
+    background-color: #00c0ef;
+    line-height: 80px;
+}
+
+.coin_title img {
+    margin-right: 12px;
+    width: 30px;
+    height: 30px;
+}
+
+.coin_title p {
+    font-size: 20px;
+    color: #f9f9f9;
+}
+
+.how_to_res {
+
+}
+
+.how_to_process {
+    padding: 0 10px 10px 10px;
+    background-color: #fff;
+}
+
+.how_to_process p {
+    line-height: 30px;
+    color: #555;
+}
+
+.how_to_form {
+    padding-bottom: 45px;
+}
+
+.how_to_form .row {
+    margin: 0 0 15px 0;
+}
+
+.how_to_form label, .how_to_form div {
+    padding: 0;
+    color: #555;
+}
+
+.coin_pay_get_list_pager {
+    padding: 15px 0;
+    line-height: 36px;
+}
+
+.coin_pay_get_list_pager ul {
+    float: none !important;
+}
+
+.join_us_list {
+    margin-bottom: 25px;
+}
+
+.how_to_process .label {
+    display: block;
+    margin: auto;
+    width: 120px;
+    text-align: center;
+    height: 40px;
+    line-height: 40px;
+    font-size: 20px;
+}
+
+.logs_container {
+    background-color: #2d3b9b;
+    position: relative;
+    padding: 70px 0;
+}
+
+.logs_container ul {
+    padding-left: 0;
+    margin-bottom: 0;
+}
+
+.logs_container_line {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    margin-left: -1px;
+    width: 2px;
+    height: 100%;
+    background: #45508f;
+}
+
+.logs_container_list {
+    position: relative;
+    margin: auto;
+    width: 830px;
+}
+
+.logs_container_list:first-child .logs_container_line {
+    box-sizing: content-box;
+    padding-top: 70px;
+    top: -70px;
+}
+
+.logs_container_list:last-child .logs_container_line {
+    box-sizing: content-box;
+    padding-top: 70px;
+}
+
+.logs_container_list_left .logs_container_list_left_part {
+    padding: 10px 30px;
+    width: 380px;
+    background-color: #fff;
+    border-radius: 6px;
+}
+
+.logs_container_circle {
+    position: absolute;
+    z-index: 999;
+    top: 50%;
+    left: 50%;
+    margin: -13px 0 0 -13px;
+    padding: 4px;
+    width: 26px;
+    height: 26px;
+    background-color: #2d3b9b;
+    border-radius: 100%;
+    border: 1px solid #4d59a5;
+}
+
+.logs_container_circle span {
+    display: block;
+    width: 16px;
+    height: 16px;
+    border-radius: 100%;
+    border: 1px solid #ffffff;
+}
+
+.logs_container_list_left .logs_container_list_right_part {
+    position: absolute;
+    right: 0;
+    width: 50%;
+    top: 50%;
+    margin-top: -10px;
+    padding-left: 30px;
+    height: 20px;
+    line-height: 20px;
+    font-size: 20px;
+    color: #fff;
+}
+
+.triangle {
+    position: absolute;
+    height: 0;
+    width: 0;
+    top: 50%;
+    margin-top: -10px;
+    border-width: 12px;
+    border-style: solid;
+
+    z-index: 99;
+}
+
+.logs_container_list_left .triangle {
+    left: 380px;
+    border-color: transparent transparent transparent #fff;
+}
+
+.logs_container_list_right {
+    padding-left: 445px;
+}
+
+.logs_container_list_right .logs_container_list_left_part {
+    position: relative;
+    padding: 10px 30px;
+    width: 380px;
+    background-color: #fff;
+    border-radius: 6px;
+}
+
+.logs_container_list_right .logs_container_list_right_part {
+    position: absolute;
+    left: 0;
+    width: 50%;
+    top: 50%;
+    margin-top: -10px;
+    padding-right: 30px;
+    height: 20px;
+    line-height: 20px;
+    font-size: 20px;
+    color: #fff;
+    text-align: right;
+}
+
+.logs_container_list_right .triangle {
+    left: -24px;
+    border-color: transparent #fff transparent transparent;
+}
+
+.xs_show_container {
+    padding: 0 15px !important;
+}
+
+.xs_show_container li {
+    padding-bottom: 15px;
+    width: 100%;
+}
+
+.xs_show_container .logs_container_list_left_part {
+    width: 8rem;
+}
+
+.xs_show_container .triangle {
+    margin-top: -17px;
+    left: 8rem;
+}
+
+.xs_show_container .logs_container_line {
+    left: auto;
+    right: 13px;
+}
+
+.xs_show_container .logs_container_circle {
+    left: auto;
+    right: 0;
+    margin: -20px 0 0 -13px;
+}
+
+.mycoin_actions_container {
+    display: flex;
+}
+
+.mycoin_actions_container a {
+    display: block;
+    margin-right: 15px;
+    width: 50%;
+}
+
+.open_wx {
+    border: 1px solid #00c0ef;
+}

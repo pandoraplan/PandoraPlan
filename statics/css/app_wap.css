@@ -1,0 +1,54 @@
+body {
+    /*background: url("/statics/images/app5.png")no-repeat;*/
+    /*background-size: 100%;*/
+    /*display: flex;*/
+    /*align-items: center;*/
+    /*justify-content: center;*/
+}
+
+.contain {
+    /*display: flex;*/
+    /*flex-direction: column;*/
+    /*align-items: center;*/
+    text-align: center;
+    /*padding: 1rem 0;*/
+    padding-bottom: .5rem;
+}
+
+.contain_top {
+    background: url("/statics/images/download_wap_bg_top1.png")no-repeat;
+    background-size: 100%;
+    text-align: center;
+    margin-bottom: .4rem;
+}
+
+.contain img:first-child {
+    width: 2.6rem;
+    margin-bottom: .5rem;
+}
+
+.contain img:nth-child(2) {
+    width: 5rem;
+    margin-bottom: .4rem;
+}
+
+.contain img:nth-child(3) {
+    width: 3rem;
+    height: 6rem;
+    margin-bottom: .5rem;
+}
+
+.contain a {
+    display: inline-block;
+    width: 5rem;
+    height: .8rem;
+    line-height: .8rem;
+    font-size: .24rem;
+    color: white;
+    text-align: center;
+    /* background: rgb(11, 144, 209); */
+    border-radius: 4px;
+    /* box-shadow: 0 0 20px #888888; */
+    background: url("/statics/images/download_wap_bg_button1.png")no-repeat;
+    background-size: 100% 100%;
+}

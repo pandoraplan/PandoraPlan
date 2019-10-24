@@ -1,0 +1,771 @@
+<html>
+<!DOCTYPE html>
+<html ng-app="demo">
+
+<head>
+    <meta charset="UTF-8">
+    <title>PandoraPlan</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="keywords" content="PandoraPlan">
+    <meta name="description" content="PandoraPlan">
+    <link rel="shortcut icon" href="statics/images/logo.png">
+    <!-- Using only with Flat-UI (free)-->
+    <link rel="stylesheet" href="statics/index/developer/common-files/css/icon-font.css">
+    <!-- end -->
+    <link rel="stylesheet" href="statics/style/hk.css" type="text/css">
+
+    <link rel="stylesheet" href="statics/style/style.css">
+    <link rel="stylesheet" href="statics/css/reset.css">
+    <link rel="stylesheet" href="statics/index/developer/samples/sample-02/css/style.css">
+    <link rel="stylesheet" href="statics/index/developer/samples/sample-05/css/style.css">
+    <link rel="stylesheet" href="statics/layui/css/layui.css">
+    <script src="statics/layui/js/layui.js"></script>
+    <link rel="stylesheet" href="statics/css/swiper.min.css">
+    <link rel="stylesheet" href="statics/css/indexV2.css">
+    <script type="text/javascript" src="statics/js/three.min.js"></script>
+
+    <script type="text/javascript" src="statics/js/dat.gui.min.js"></script>
+
+    <script type="text/javascript" src="statics/js/Stats.min.js"></script>
+    <script src="statics/js/jquery-1.8.3.min.js"></script>
+    <script src="statics/js/index.js"></script>
+    <script>
+        function chargeBrowser(args) {
+            var info = window.navigator.userAgent;
+            if (info.indexOf("MSIE") != -1 && info.indexOf("compatible") != -1) { //判断IE
+                var re_ie = /MSIE.*? (\d+)/;
+                result = info.match(re_ie);
+                var version = result[1];
+                if (version < 10) {
+                    alert('请用高版本浏览器打开，推荐使用谷歌浏览器，360浏览器');
+                    // window.location.href='http://se.360.cn/';
+                } else {
+                    if (!args) {
+                        alert('为了使您的体验更加舒适，推荐使用谷歌浏览器，360浏览器，QQ浏览器,火狐浏览器等');
+                    }
+
+                }
+            } else if (info.indexOf('AppleWebKit') == -1 && info.indexOf("Firefox") == -1) {
+                if (!args) {
+                    alert('为了使您的体验更加舒适，推荐使用谷歌浏览器，360浏览器，QQ浏览器,火狐浏览器等');
+                }
+            }
+        }
+        chargeBrowser();
+    </script>
+    <script type="text/javascript">
+        var mobileAgent = new Array("iphone", "ipod", "ipad", "android", "mobile", "blackberry", "webos", "incognito", "webmate", "bada", "nokia", "lg", "ucweb", "skyfire");
+        var browser = navigator.userAgent.toLowerCase();
+        var isMobile = false;
+        for (var i = 0; i < mobileAgent.length; i++) {
+            if (browser.indexOf(mobileAgent[i]) != -1) {
+                isMobile = true;
+                //alert(mobileAgent[i]);
+                location.href = './wap/index.html';
+                break;
+            }
+        }
+    </script>
+</head>
+
+<body class="skin-blue">
+    <header>
+        <ul>
+            <li>
+                <a href="index.html"><img src="statics/images/newPage/logo1.png" alt=""></a>
+                <a href="index.html"><img src="statics/images/newPage/logo2.png" alt=""></a>
+            </li>
+            <li>
+                <a href="#about">關於</a>
+                <a href="#technology">規劃</a>
+                <a href="#swipercontent">佈局</a>
+                <a href="statics/Pandora Plan.pdf">白皮書</a>
+            </li>
+        </ul>
+    </header>
+
+
+
+    <!-- 内容区域 -->
+    <div class="main_content">
+        <script src="statics/js/swiper.min.js"></script>
+        <script src="statics/js/lottie.min.js"></script>
+        <style>
+            @font-face {
+                font-family: 'MEDIUM';
+                src: url('./statics/font/AKZIDENZGROTESK-MEDIUM.OTF');
+            }
+            
+            @font-face {
+                font-family: 'fontHelveticaNeueCE35Roman';
+                src: url('./statics/font/HelveticaNeueCE35Roman.ttf');
+            }
+            
+            @font-face {
+                font-family: 'AVGARDM';
+                src: url('./statics/font/AVGARDM.TTF');
+            }
+            
+            @font-face {
+                font-family: 'LIGHT';
+                src: url('./statics/font/AKZIDENZGROTESK-LIGHT.OTF');
+            }
+            
+            body {
+                background-color: #000000;
+            }
+            
+            #bodymovin {
+                width: 500px;
+                height: 600px;
+                margin: 0 auto;
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                margin-left: -250px;
+                margin-top: -300px;
+            }
+            
+            .index_top {
+                width: 100%;
+                /* height: 900px; */
+                background-color: #000000;
+                position: relative;
+            }
+            
+            .index_top .index_top_center {
+                width: 100%;
+                height: 160px;
+                position: absolute;
+                left: 0;
+                top: 50%;
+                margin-top: -110px;
+                color: rgb(80, 198, 226);
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            .index_top .index_top_title {
+                font-size: 120px;
+                padding: 0;
+                font-family: 'MEDIUM';
+            }
+            
+            .index_top .index_top_tips {
+                font-size: 16px;
+                font-weight: normal;
+                margin-top: -55px;
+                font-family: 'fontHelveticaNeueCE35Roman';
+            }
+            
+            .index_top .left_tips {
+                position: absolute;
+                bottom: 100px;
+                left: -40px;
+                color: #5f5f5f;
+                transform: rotate(90deg);
+                -ms-transform: rotate(90deg);
+                /* IE 9 */
+                -moz-transform: rotate(90deg);
+                /* Firefox */
+                -webkit-transform: rotate(90deg);
+                /* Safari 和 Chrome */
+                -o-transform: rotate(90deg);
+                /* Opera */
+            }
+            
+            .index_top .right_tips {
+                position: absolute;
+                bottom: 48px;
+                right: 20px;
+                color: #5f5f5f;
+            }
+            
+            .about,
+            .technology {
+                display: block;
+                width: 100%;
+                padding: 100px 0;
+                position: relative;
+            }
+            
+            .about .index_title {
+                text-align: right;
+            }
+            
+            .technology {
+                padding: 0 120px;
+            }
+            
+            .index_title {
+                font-size: 32px;
+                font-family: 'AVGARDM';
+                color: #ffffff;
+            }
+            
+            .index_title span {
+                display: inline-block;
+                border-left: 1px solid #a8a8a8;
+                margin-left: 200px;
+                font-size: 12px;
+                padding: 0 30px;
+                font-weight: bold;
+            }
+            
+            .about .top_left {
+                position: absolute;
+                top: 50px;
+                left: 50px;
+            }
+            
+            .about .bottom_right {
+                width: 30%;
+                max-width: 500px;
+                position: absolute;
+                top: 250px;
+                right: 0;
+            }
+            
+            .about article {
+                width: 70%;
+                padding-left: 100px;
+                margin-top: 200px;
+            }
+            
+            .about article h5 {
+                font-size: 40px;
+                font-family: 'MEDIUM';
+                color: #000;
+            }
+            
+            .about article section {
+                margin-top: 50px;
+                line-height: 60px;
+                font-size: 30px;
+                color: rgb(80, 198, 226);
+                font-family: 'LIGHT';
+            }
+            
+            .technology>ul {
+                min-width: 1200px;
+                margin: 0 auto;
+                display: flex;
+                justify-content: space-between;
+                /* padding-top: 100px; */
+            }
+            
+            .technology>ul li {
+                width: 380px;
+                /* margin-top: 100px; */
+                text-align: center;
+            }
+            
+            .technology>ul li>div {
+                border-radius: 50%;
+                height: 380px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            
+            .technology>ul li>div img {
+                margin: 45px 0;
+                width: 40%;
+            }
+            
+            .technology>ul li>div h6 {
+                font-size: 26px;
+                color: rgb(80, 198, 226);
+                font-family: 'MEDIUM';
+            }
+            
+            .technology>ul li>div section {
+                font-size: 14px;
+                line-height: 20px;
+                padding: 0 30px;
+                margin-top: 20px;
+                /* color: #fff; */
+                font-family: 'LIGHT';
+            }
+            
+            .technology>ul>li>img {
+                width: 50px;
+                margin: 50px 0;
+            }
+            /* .technology>ul>li>div>img {
+                width: 20px;
+            } */
+            
+            .technology {
+                text-align: center;
+                margin-bottom: 100px;
+            }
+            
+            .technology>span {
+                display: inline-block;
+                width: 2px;
+                height: 200px;
+                background-color: #5c5c5c;
+            }
+            
+            .technology>i {
+                display: inline-block;
+                width: 8px;
+                height: 8px;
+                background-color: #a4182e;
+                border-radius: 50%;
+                text-align: center;
+            }
+            
+            .about {
+                margin-bottom: 200px;
+            }
+            
+            .run_box {
+                margin-top: 100px;
+                margin-left: 50px;
+                margin-right: 50px;
+                position: relative;
+            }
+            
+            .run_box>img {
+                position: absolute;
+                left: -50px;
+                bottom: 25px;
+                width: 100px;
+                z-index: 2;
+            }
+            /* .run_box_bg {
+                width: 100%;
+                height: 100%;
+                padding: 0 30px;
+                position: absolute;
+                box-sizing: border-box;
+                left: 0;
+                top: -40px;
+                z-index: -1;
+            } */
+            /* .run_box_bg>span {
+                display: inline-block;
+                background-color: #000;
+                width: 100%;
+                height: 100%;
+                padding: 40px 0;
+                box-sizing: content-box;
+            } */
+            
+            .team {
+                padding: 50px 0;
+                position: relative;
+                overflow: hidden;
+            }
+            
+            .team h6 i {
+                display: inline-block;
+                width: 100px;
+                height: 16px;
+                background-color: #000;
+            }
+            
+            .team .leftTop {
+                position: absolute;
+                width: 380px;
+                left: -190px;
+                top: -170px;
+            }
+            
+            .team .bottomRight {
+                position: absolute;
+                width: 380px;
+                right: -150px;
+                bottom: 0;
+            }
+            
+            .team_item {
+                text-align: center;
+                position: relative;
+            }
+            
+            .team_item a {
+                width: 100%;
+                height: 400px;
+                display: inline-block;
+                position: absolute;
+            }
+            
+            .team_item img {
+                width: 300px;
+                border-radius: 50%;
+                margin-bottom: 20px;
+            }
+            
+            .team_item .name {
+                font-size: 24px;
+                color: #959595;
+                font-family: 'MEDIUM';
+            }
+            
+            .team_item .info {
+                font-size: 20px;
+                color: #797979;
+                font-family: 'LIGHT';
+            }
+            
+            .team_container .swiper-slide-prev .team_item img,
+            .team_container .swiper-slide-next .team_item img {
+                width: 200px;
+                margin-top: 50px;
+            }
+            
+            .team_list {
+                width: 1200px;
+                margin: 200px auto;
+                padding-bottom: 200px;
+            }
+            
+            .team_list .swiper-button-prev,
+            .swiper-container-rtl .swiper-button-next {
+                background-image: url('./statics/images/newPage/13.png');
+                left: 0;
+            }
+            
+            .team_list .swiper-button-next,
+            .swiper-container-rtl .swiper-button-prev {
+                background-image: url('./statics/images/newPage/12.png');
+                right: 0;
+            }
+            
+            .team_list .swiper-button-next,
+            .team_list .swiper-button-prev {
+                width: 73px;
+                height: 73px;
+                background-size: 50%;
+                margin-top: -36px;
+            }
+            
+            .bearList ul {
+                width: 1200px;
+                margin: -100px auto 150px auto;
+                display: flex;
+                justify-content: space-between;
+                flex-wrap: wrap;
+            }
+            
+            .bearList ul li {
+                width: 48%;
+                margin: 50px 0;
+            }
+            
+            .bearList ul li h6 {
+                font-size: 22px;
+                color: #959595;
+                margin: 30px 0;
+                font-family: 'MEDIUM';
+            }
+            
+            .bearList ul li section {
+                font-size: 20px;
+                color: #e2e2e2;
+                line-height: 32px;
+                font-family: 'LIGHT';
+            }
+            
+            .run_box .swiper-pagination-bullet-active {
+                background: #fff;
+            }
+            
+            .run_box .swiper-button-prev,
+            .swiper-container-rtl .swiper-button-next {
+                background-image: url('./statics/images/newPage/9.png');
+            }
+            
+            .run_box .swiper-button-next,
+            .swiper-container-rtl .swiper-button-prev {
+                background-image: url('./statics/images/newPage/8.png');
+            }
+            
+            .run_box .swiper-button-next,
+            .run_box .swiper-button-prev {
+                background-size: 100%;
+                width: 15px;
+                height: 20px;
+                top: 100%;
+                left: 50%;
+                margin-top: -30px;
+                margin-left: -8px;
+            }
+            
+            .box_pt {
+                padding-top: 0px;
+                padding-left: 11rem;
+                padding-right: 12rem;
+            }
+        </style>
+
+        <div class="index_top">
+            <!-- <div id="bodymovin"></div> -->
+            <div id="WebGL-output"></div>
+            <div class="index_top_center">
+                <p class="index_top_title">Pandora Plan</p>
+            </div>
+        </div>
+        <!-- about -->
+        <a class="about" name='about'>
+            <img src="statics/images/newPage/1.png" alt="" class="top_left">
+            <h6 class="index_title">關於 <span>01</span></h6>
+            <article>
+                <h5>Pandora Plan目標 </h5>
+                <section>
+                    Pandora Plan建立共享社區是希望通過社區力量對傳統遊戲進行區塊鏈改造，打造基於區塊鏈、人工智能的遊戲流量入口，服務於項目方、社群和遊戲以及用戶全產業鏈。 </section>
+            </article>
+            <img src="statics/images/newPage/2.png" alt="" class="bottom_right">
+        </a>
+        <!-- technology -->
+        <a class="technology" name='technology'>
+            <h6 class="index_title" style="text-align: left;">規劃 <span>02</span></h6>
+            <ul>
+                <li>
+                    <div>
+                        <img src="statics/images/bg_01.png" alt="">
+                        <h6> 在創世階段唯一</h6>
+                        <h6> 一個獲取PDP的入口。</h6>
+                        <!-- <section style="color:#797979">
+                            在創世階段唯一一個獲取PDP的入口。</section> -->
+                    </div>
+                    <!-- <img src="statics/images/newPage/4.png" alt=""> -->
+                </li>
+                <li>
+                    <div>
+                        <img src="statics/images/bg_02.png" alt="">
+                        <h6> 最早領悟Pandora Plan的人類，</h6>
+                        <h6>也就是製造財富的智者。</h6>
+                        <!-- <section>
+                            最早領悟Pandora Plan的人類，也就是製造財富的智者。 </section> -->
+                    </div>
+                    <!-- <img src="statics/images/newPage/5.png" alt=""> -->
+                </li>
+
+                <li>
+                    <div>
+                        <img src="statics/images/bg_03.png" alt="">
+                        <h6>星星之火引來源源不斷、</h6>
+                        <h6>無限循環的生命閉環。</h6>
+                        <!-- <section>
+                            星星之火引來源源不斷、無限循環的生命閉環。 </section> -->
+                    </div>
+                    <!-- <img src="statics/images/newPage/6.png" alt=""> -->
+                </li>
+            </ul>
+
+            <ul class="box_pt">
+                <li>
+                    <div>
+                        <img src="statics/images/bg_04.png" alt="">
+                        <h6> 只有擁有上帝鑰匙的人</h6>
+                        <h6>才能打開通往財富自由的魔盒。</h6>
+                        <!-- <section style="color:#797979">
+                            只有擁有上帝鑰匙的人才能打開通往財富自由的魔盒。 </section> -->
+                    </div>
+                    <!-- <img src="statics/images/newPage/4.png" alt=""> -->
+                </li>
+                <li>
+                    <div>
+                        <img src="statics/images/bg_05.png" alt="">
+                        <h6>一場只有PDP</h6>
+                        <h6>才能參與的ETH爭奪賽。</h6>
+                        <!-- <section>
+                            一場只有PDP才能參與的ETH爭奪賽。 </section> -->
+                    </div>
+                    <!-- <img src="statics/images/newPage/5.png" alt=""> -->
+                </li>
+            </ul>
+            <!-- <span></span></br><i></i> -->
+        </a>
+        <!-- 轮播 -->
+        <div class="run_box swipercontent" id="swipercontent">
+            <h6 class="index_title" style="text-align: left;">佈局 <span>03</span></h6>
+            <!-- <p class="run_box_bg"><span></span></p> -->
+            <img src="statics/images/newPage/11_wap.png" alt="">
+            <div>
+                <div class="swiper-container news_container">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <!-- <a href="./article/detail-id=523.html"> -->
+                            <a href="">
+                                <img src="images/01.png" alt="" style="width: 100%; height: 95%;">
+                            </a>
+                        </div>
+                        <div class="swiper-slide">
+                            <!-- <a href="./article/detail-id=522.html"> -->
+                            <a href="">
+                                <img src="images/02.png" alt="" style="width: 100%; height: 95%;">
+                            </a>
+                        </div>
+                        <div class="swiper-slide">
+                            <!-- <a href="./article/detail-id=515.html"> -->
+                            <a href="">
+                                <img src="images/03.png" alt="" style="width: 100%; height: 95%;">
+                            </a>
+                        </div>
+                        <div class="swiper-slide">
+                            <!-- <a href="./article/detail-id=508.html"> -->
+                            <a href="">
+                                <img src="images/04.png" alt="" style="width: 100%; height: 95%;">
+                            </a>
+                        </div>
+                    </div>
+                    <!-- <div style="height: 30px;"> -->
+                    <div class="swiper-pagination"></div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                    <!-- </div> -->
+
+                </div>
+                <!-- <img src="./statics/images/newPage/10.png" alt=""> -->
+            </div>
+        </div>
+
+        <img src="./statics/images/newPage/newbg.jpg" alt="" style="width:100%; margin-top: 50px;">
+
+        <script>
+            //新闻轮播
+            var mySwiper = new Swiper('.news_container', {
+                autoplay: true,
+                loop: true,
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+            });
+
+
+            (function() {
+                // 获取轮播页数定位翻页按钮位置
+                var pages = $(".run_box .swiper-slide").length;
+                $(".run_box .swiper-button-prev, .swiper-container-rtl .swiper-button-next").css({
+                    'margin-left': -8 + (-8 * (pages)) + 'px'
+                });
+                $(".run_box .swiper-button-next, .swiper-container-rtl .swiper-button-prev").css({
+                    'margin-left': -8 + (8 * (pages)) + 'px'
+                })
+            })()
+        </script>
+    </div>
+
+
+
+    <!--底部-->
+    <footer>
+        <ul>
+            <li>
+                <dl>
+                    <dt>聯係我們 <i></i></dt>
+                    <div class="Contact_us">
+                        <!-- <a href="" target="_blank"><img src="statics/images/newPage/pc_03.png" alt=""></a> -->
+                        <!-- <a href="" target="_blank"><img src="statics/images/newPage/pc_05.png" alt=""></a> -->
+                        <a href="" target="_blank"><img src="statics/images/newPage/pc_07.png" alt=""></a>
+                        <!-- <a href="" target="_blank"><img src="statics/images/newPage/pc_12.png" alt=""></a> -->
+                        <a href="mailto:pandoraplan1@gmail.com" target="_blank"><img src="statics/images/newPage/pc_13.png" alt=""></a>
+                        <a href="" target="_blank"><img src="statics/images/github.png" alt=""></a>
+                    </div>
+                </dl>
+            </li>
+            <li>
+                <dl>
+                    <dt>Pandora Plan目標<i></i></dt>
+                    <dd>Pandora Plan建立共享社區是希望通過社區力量對傳統遊戲進行區塊鏈改造，打造基於區塊鏈、人工智能的遊戲流量入口，服務於項目方、社群和遊戲以及用戶全產業鏈。
+                    </dd>
+                </dl>
+            </li>
+            <li>
+                <dl>
+                    <dt>白皮書 <i></i></dt>
+                    <dd><a style='color: #fff' href="statics/Pandora Plan.pdf">Pandora Plan
+                        </a> </dd>
+                </dl>
+            </li>
+        </ul>
+        <img src="statics/images/newPage/top.png" alt="" class="backTop">
+    </footer>
+
+    <!--    <audio id="bg_m" src="/statics/bg3.mp3" autoplay="auto" loop="loop">-->
+    <!--    -->
+    <!--</audio>-->
+    <!--<img src="/statics/images/bg_m_play.png" id="music_btn">-->
+    <style type="text/css">
+        #music_btn {
+            position: fixed;
+            bottom: 100px;
+            right: 80px;
+            width: 36px;
+            height: 36px;
+            /*border: 1px solid #ccc;*/
+            z-index: 99;
+        }
+        
+        .footer_top h4 a {
+            margin-right: 15px;
+        }
+    </style>
+    <script data-cfasync="false" src="cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script src="statics/js/swiper.min.js"></script>
+    <script type="text/javascript">
+        var play_status = 1;
+        $('#music_btn').click(function() {
+            if (play_status == 1) {
+                play_status = 2;
+                //
+                document.getElementById("bg_m").pause();
+                $('#music_btn').attr('src', '/statics/images/bg_m_stop.png');
+            } else {
+
+                play_status = 1;
+                //
+                document.getElementById("bg_m").play();
+                $('#music_btn').attr('src', '/statics/images/bg_m_play.png');
+            }
+        });
+        //轮播
+        var mySwiper = new Swiper('.index_banner', {
+            autoplay: true,
+            loop: true,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        });
+        //鼠标移入轮播停止播放 移出开始播放
+        $('.index_banner').mouseenter(function() {
+            mySwiper.autoplay.stop();
+        }).mouseleave(function() {
+            mySwiper.autoplay.start();
+        })
+
+        //返回顶部
+        $(".backTop").click(function() {
+            $('html , body').animate({
+                scrollTop: 0
+            }, 'slow');
+        })
+    </script>
+    <!-- <div style="display: none">
+        <script src="./statics/php/z_stat.php" language="JavaScript"></script>
+    </div> -->
+    <script src="statics/js/main.js"></script>
+</body>
+
+</html>

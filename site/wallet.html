@@ -1,0 +1,370 @@
+<html>
+<!DOCTYPE html>
+<html ng-app="demo">
+
+<head>
+    <meta charset="UTF-8">
+    <title>PandoraPlan</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="keywords" content="PandoraPlan">
+    <meta name="description" content="PandoraPlan">
+    <link rel="shortcut icon" href="../statics/images/logo.png">
+    <!-- Using only with Flat-UI (free)-->
+    <link rel="stylesheet" href="../statics/index/developer/common-files/css/icon-font.css">
+    <!-- end -->
+    <link rel="stylesheet" href="../statics/style/hk.css" type="text/css">
+
+    <link rel="stylesheet" href="../statics/style/style.css">
+    <link rel="stylesheet" href="../statics/css/reset.css">
+    <link rel="stylesheet" href="../statics/index/developer/samples/sample-02/css/style.css">
+    <link rel="stylesheet" href="../statics/index/developer/samples/sample-05/css/style.css">
+    <link rel="stylesheet" href="../statics/layui/css/layui.css">
+    <script src="../statics/layui/layui.js"></script>
+    <link rel="stylesheet" href="../statics/css/swiper.min.css">
+    <link rel="stylesheet" href="../statics/css/indexV2.css">
+    <script src="../statics/js/jquery-1.8.3.min.js"></script>
+    <script>
+        function chargeBrowser(args) {
+            var info = window.navigator.userAgent;
+            if (info.indexOf("MSIE") != -1 && info.indexOf("compatible") != -1) { //判断IE
+                var re_ie = /MSIE.*? (\d+)/;
+                result = info.match(re_ie);
+                var version = result[1];
+                if (version < 10) {
+                    alert('请用高版本浏览器打开，推荐使用谷歌浏览器，360浏览器');
+                    // window.location.href='http://se.360.cn/';
+                } else {
+                    if (!args) {
+                        alert('为了使您的体验更加舒适，推荐使用谷歌浏览器，360浏览器，QQ浏览器,火狐浏览器等');
+                    }
+
+                }
+            } else if (info.indexOf('AppleWebKit') == -1 && info.indexOf("Firefox") == -1) {
+                if (!args) {
+                    alert('为了使您的体验更加舒适，推荐使用谷歌浏览器，360浏览器，QQ浏览器,火狐浏览器等');
+                }
+            }
+        }
+        chargeBrowser();
+    </script>
+</head>
+
+<body class="skin-blue">
+    <header>
+        <ul>
+            <li>
+                <a href="../index.html"><img src="../statics/images/newPage/logo.png" alt=""></a>
+            </li>
+            <li>
+                <a href="../index.html">About</a>
+                <a href="../statics/BaerChainWhitePaperv1_2_en.pdf">White Paper </a>
+                <a href="news.html">News</a>
+                <a href="wallet.html">Wallet</a>
+            </li>
+            <!-- <li class="language">
+                <i></i>
+                <form class="layui-form" action="http://www.baerchain.com/site/language" id='language_form'>
+                    <div class="layui-form" style="width:150px;">
+                        <div class="layui-inline">
+                            <select name="language" id="languageFilter" lay-filter="language">
+                                                                        <option value="en" selected>English</option>
+                                    <option value="ko">한국어</option>
+                                    <option value="zh" >中文</option>
+                                                                    </select>
+                        </div>
+                    </div>
+                </form>
+                <script>
+                    layui.use('form', function() {
+                        var form = layui.form();
+                        form.on('select(language)', function(data) {
+                            //console.log(data.elem); //得到select原始DOM对象
+                            console.log(data.value); //得到被选中的值
+                            //console.log(data.othis); //得到美化后的DOM对象
+                            $('#language_form').submit();
+                        });
+                    });
+                </script>
+            </li> -->
+        </ul>
+    </header>
+
+
+
+    <!-- 内容区域 -->
+    <div class="main_content">
+        <script src="../statics/js/lottie.min.js"></script>
+        <style>
+            @font-face {
+                font-family: 'AVGARDM';
+                src: url('../statics/font/AVGARDM.TTF');
+            }
+            
+            @font-face {
+                font-family: 'LIGHT';
+                src: url('../statics/AKZIDENZGROTESK-LIGHT.OTF');
+            }
+            
+            .team_banner>img {
+                width: 100%;
+            }
+            
+            .team_banner {
+                position: relative;
+                overflow: hidden;
+            }
+            
+            #team_banner {
+                width: 530px;
+                position: absolute;
+                top: -60px;
+                right: 0;
+            }
+            
+            .team_banner P {
+                font-size: 50px;
+                font-weight: bold;
+                position: absolute;
+                left: 0;
+                bottom: 30px;
+                color: #fff;
+                text-indent: 200px;
+                font-family: 'AVGARDM';
+                font-weight: normal;
+                letter-spacing: 5px;
+            }
+            
+            .download_box {
+                width: 900px;
+                margin: 200px auto;
+            }
+            
+            .download_box>div {
+                display: flex;
+                justify-content: space-between;
+            }
+            
+            .download_box .download_box_title {
+                font-size: 30px;
+                color: #000;
+                font-weight: bold;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin-bottom: 50px;
+            }
+            
+            .download_box_left {
+                text-align: center;
+            }
+            
+            .download_box_left>img {
+                width: 300px;
+            }
+            
+            .download_box_left .btn span {
+                display: inline-block;
+                color: #fff;
+                background-color: #a8162d;
+                height: 40px;
+                line-height: 40px;
+                border-radius: 40px;
+                padding: 0 30px;
+                margin-top: 20px;
+            }
+            
+            .download_box_right .num {
+                font-size: 28px;
+                font-weight: bold;
+                padding-bottom: 10px;
+            }
+            
+            .download_box_right {
+                margin-top: 100px;
+            }
+            
+            .download_box_right .tips {
+                font-size: 26px;
+                font-family: 'LIGHT';
+                font-weight: normal;
+            }
+            
+            .download_box_right ul {
+                height: 300px;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+            }
+        </style>
+        <div class="wallet">
+            <div class="team_banner">
+                <img src="../statics/images/newPage/news_02.png" alt="">
+                <p>WALLET</p>
+                <div id="team_banner"></div>
+            </div>
+            <div class="download_box">
+                <div>
+                    <div class="download_box_left">
+                        <p class="download_box_title">To download <img src="../statics/images/newPage/wallet21.png" alt=""></p>
+                        <img src="../statics/images/newPage/wallet22.png" alt="">
+                        <div class="btn"><span>IOS / ANDROID</span></div>
+                    </div>
+                    <div class="download_box_right">
+                        <ul>
+                            <li>
+                                <p class="num">1/</p>
+                                <p class="tips">Scan the QR code to download the app</p>
+                            </li>
+                            <li>
+                                <p class="num">2/</p>
+                                <p><a class="tips" href="app.html">Open the Web: <br/>https://baerchain.com/site/app</a></p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div style="margin-top: 90px">
+                    <div class="download_box_left">
+                        <p class="download_box_title"> Service <img src="../statics/images/newPage/wallet21.png" alt=""></p>
+                        <img src="../statics/images/newPage/33.png" alt="">
+                        <!--        <div class="btn"><span>IOS / ANDROID</span></div>-->
+                    </div>
+                    <!--      <div class="download_box_right">-->
+                    <!--        <ul>-->
+                    <!--          <li>-->
+                    <!--            <p class="num">1/</p>-->
+                    <!--            <p class="tips">-->
+                    <!--</p>-->
+                    <!--          </li>-->
+                    <!--          <li>-->
+                    <!--            <p class="num">2/</p>-->
+                    <!--            <p class="tips">-->
+                    <!--</p>-->
+                    <!--          </li>-->
+                    <!--        </ul>-->
+                    <!--      </div>-->
+                </div>
+            </div>
+        </div>
+        <script>
+            // 顶部动画
+            var animData = {
+                wrapper: document.getElementById('team_banner'),
+                animType: 'svg',
+                loop: true,
+                prerender: true,
+                autoplay: true,
+                path: '/statics/jason/data.json'
+            };
+            var anim = bodymovin.loadAnimation(animData);
+        </script>
+    </div>
+
+
+
+    <!--底部-->
+    <footer>
+        <ul>
+            <li>
+                <dl>
+                    <dt>Contact us <i></i></dt>
+                    <div class="Contact_us">
+                        <a href="" target="_blank"><img src="../statics/images/newPage/pc_03.png" alt=""></a>
+                        <a href="" target="_blank"><img src="../statics/images/newPage/pc_05.png" alt=""></a>
+                        <a href="" target="_blank"><img src="../statics/images/newPage/pc_07.png" alt=""></a>
+                        <a href="" target="_blank"><img src="../statics/images/newPage/pc_12.png" alt=""></a>
+                        <a href="" target="_blank"><img src="../statics/images/newPage/pc_13.png" alt=""></a>
+                        <a href="" target="_blank"><img src="../statics/images/github.png" alt=""></a>
+                    </div>
+                </dl>
+            </li>
+            <li>
+                <dl>
+                    <dt>Baer Chain<i></i></dt>
+                    <dd>Baer Chain, a game ecosystem based on blockchain technology architecture, uses distributed smart contracts.</dd>
+                </dl>
+            </li>
+            <li>
+                <dl>
+                    <dt>Resources <i></i></dt>
+
+                    <dd><a style='color: #fff' href="../statics/BaerChainWhitePaperv1_2_en.pdf">Baer Chain White Paper V1.2 </a> </dd>
+                </dl>
+            </li>
+        </ul>
+        <img src="../statics/images/newPage/newPage16.png" alt="" class="backTop">
+    </footer>
+
+    <!--    <audio id="bg_m" src="/statics/bg3.mp3" autoplay="auto" loop="loop">-->
+    <!--    -->
+    <!--</audio>-->
+    <!--<img src="/statics/images/bg_m_play.png" id="music_btn">-->
+    <style type="text/css">
+        #music_btn {
+            position: fixed;
+            bottom: 100px;
+            right: 80px;
+            width: 36px;
+            height: 36px;
+            /*border: 1px solid #ccc;*/
+            z-index: 99;
+        }
+        
+        .footer_top h4 a {
+            margin-right: 15px;
+        }
+    </style>
+    <script data-cfasync="false" src="../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script src="../statics/js/swiper.min.js"></script>
+    <script type="text/javascript">
+        var play_status = 1;
+        $('#music_btn').click(function() {
+            if (play_status == 1) {
+                play_status = 2;
+                //
+                document.getElementById("bg_m").pause();
+                $('#music_btn').attr('src', '/statics/images/bg_m_stop.png');
+            } else {
+
+                play_status = 1;
+                //
+                document.getElementById("bg_m").play();
+                $('#music_btn').attr('src', '/statics/images/bg_m_play.png');
+            }
+        });
+        //轮播
+        var mySwiper = new Swiper('.index_banner', {
+            autoplay: true,
+            loop: true,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        });
+        //鼠标移入轮播停止播放 移出开始播放
+        $('.index_banner').mouseenter(function() {
+            mySwiper.autoplay.stop();
+        }).mouseleave(function() {
+            mySwiper.autoplay.start();
+        })
+
+        //返回顶部
+        $(".backTop").click(function() {
+            $('html , body').animate({
+                scrollTop: 0
+            }, 'slow');
+        })
+    </script>
+    <div style="display: none">
+        <script src="../statics/php/z_stat.php" language="JavaScript"></script>
+    </div>
+    <script src="../statics/js/main.js"></script>
+</body>
+
+</html>
